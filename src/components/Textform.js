@@ -60,9 +60,8 @@ export default function Textform(props) {
         <button className="btn btn-primary mx-1" onClick={handleClearCLick}>Clear Text</button>
         <button className="btn btn-primary mx-1" onClick={handleInvrCLick}>Inverse-Case</button>
         <button className="btn btn-primary mx-1" onClick={handleAltrCLick}>Alternting-Case</button>
-        
       </div>
-      <div className="conatiner my-3">
+      <div className="conatiner my-3" >
         <h2>Your Text Summary</h2>
         <p>{text.split(' ').length} words and {text.length} characters</p>
         <p>{0.008 * text.split(' ').length} Minutes read</p>
