@@ -5,7 +5,6 @@ export default function Textform(props) {
         setText(newText);
     }
     const handleOnChange = (event) => {
-        console.log(`On Change`)
         setText(event.target.value);
     }
     const handleLoCLick = () => {
@@ -49,24 +48,24 @@ export default function Textform(props) {
   return (
     <div>
       <>
-      <div className="container">
+      <div className="container" style = {{color:props.mode === `light`?`black`:`white`}}>
       <h1>{props.purpose}</h1>
         <div class="mb-3">
-        <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
-        <textarea class="form-control" id="exampleFormControlTextarea1" rows="10" value={text} onChange={handleOnChange} placeholder='Enter A Text'></textarea>
+        <label for="exampleFormControlTextarea1" class="form-label" >Example textarea</label>
+        <textarea class="form-control" id="exampleFormControlTextarea1" rows="10" value={text} onChange={handleOnChange} placeholder='Enter A Text' style={{background:props.mode === `light`?`white`:`grey `,color:props.mode === `light`?`white`:`black`}}></textarea>
         </div>
-        <button className="btn btn-primary mx-1" onClick={handleUpperCick}>Convert To UpperCase</button>
+        <button className="btn btn-primary mx-1" onClick={handleUpperCick} >Convert To UpperCase</button>
         <button className="btn btn-primary mx-1" onClick={handleLoCLick}>Convert To LowerCase</button>
         <button className="btn btn-primary mx-1" onClick={handleClearCLick}>Clear Text</button>
         <button className="btn btn-primary mx-1" onClick={handleInvrCLick}>Inverse-Case</button>
         <button className="btn btn-primary mx-1" onClick={handleAltrCLick}>Alternting-Case</button>
       </div>
-      <div className="conatiner my-3" >
+      <div className="conatiner my-3" style = {{color:props.mode === `light`?`black`:`white`}}>
         <h2>Your Text Summary</h2>
         <p>{text.split(' ').length} words and {text.length} characters</p>
         <p>{0.008 * text.split(' ').length} Minutes read</p>
         <h2>Preview</h2>
-        <p>{text}</p>
+        <p>{text.length === 0?`Enter Something to Preview it`:text}</p>
       </div>
       </>
     </div> 
