@@ -2,48 +2,73 @@ import React , {useState} from 'react'
 export default function Textform(props) {
     const handleUpperCick = () => {
        let newText = text.toUpperCase();
+       if (text.length !== 0){
         setText(newText);
+        props.showAlert('The Text is Converted to Upper-Case','success');
+       }else{
+        alert('First Enter Some Text')
+       }
     }
     const handleOnChange = (event) => {
         setText(event.target.value);
     }
     const handleLoCLick = () => {
-        let newText = text.toLowerCase();
+        if (text.length !== 0){
+            let newText = text.toLowerCase();
         setText(newText);
+        props.showAlert('The Text is Converted to Lower-Case','success');
+        }else{
+            alert('First Enter Some Text')
+        }
     }
     const handleClearCLick = () => {
-        let newText = '';
-        setText(newText);
+        if (text.length !== 0){
+            let newText = '';
+            setText(newText);
+            props.showAlert('Text Cleared','success')
+        }else{
+            alert('First Enter Some Text')
+        }
     }
     const handleInvrCLick = () => {
-        let newText = text.split(' ').map((word) => {
-            let newStr = ``;
-            for (let i=0;i<word.length;i++){
-                if (word[i] === word[i].toUpperCase()){
-                    newStr += word[i].toLowerCase();
-                }else{
-                    newStr += word[i].toUpperCase();
+        if (text.length !== 0){
+            let newText = text.split(' ').map((word) => {
+                let newStr = ``;
+                for (let i=0;i<word.length;i++){
+                    if (word[i] === word[i].toUpperCase()){
+                        newStr += word[i].toLowerCase();
+                    }else{
+                        newStr += word[i].toUpperCase();
+                    }
                 }
-            }
-            return newStr;
-        })
-        return setText(newText.join(' '));
+                return newStr;
+            })
+            props.showAlert('Converted !!','success');
+            return setText(newText.join(' '));
+        }else{
+            alert('First Enter Some Text');
+        }
+        
     }
     const handleAltrCLick = () => {
-        let newText = text.split(' ').map((word) => {
-            let newStr = ``;
-            for (let i=0;i<word.length;i++){
-                if (i%2===0){
-                    newStr += word[i].toUpperCase();
-                }else{
-                    newStr += word[i].toLowerCase();
+        if (text.length !== 0){
+            let newText = text.split(' ').map((word) => {
+                let newStr = ``;
+                for (let i=0;i<word.length;i++){
+                    if (i%2===0){
+                        newStr += word[i].toUpperCase();
+                    }else{
+                        newStr += word[i].toLowerCase();
+                    }
                 }
-            }
-            return newStr;
-        })
-        return setText(newText.join(' '));
+                return newStr;
+            })
+            props.showAlert('Converted !!!','success');
+            return setText(newText.join(' '));
+        }else{
+            alert('First Enter Some Text');
+        }
     }
-
     const [text , setText] = useState("");
   return (
     <div>
